@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./components/Header";
+import Body from "./components/Body";
 
-function App() {
+
+// Planning WireFrame for Our App
+/**
+ *
+ * Header
+ *  - logo
+ *  - nav Items
+ *
+ * Body
+ *  - Search
+ *  - Restraunt Container
+ *    - RestroCard
+ *      - Img
+ *      - Name of Restraunt , Star Rating , Cuisines , Delivery time
+ *
+ * Footer
+ *  - Copyright
+ *  - Links
+ *  - Address
+ *  - Contact Info
+ *
+ */
+
+// component is just a Javascript function that return the JSX
+
+
+
+
+//App Component
+const AppLayout = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      <Body />
     </div>
   );
-}
+};
 
-export default App;
+export default AppLayout;
