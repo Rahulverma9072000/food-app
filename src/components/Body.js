@@ -1,4 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
+//import useState and useEffect from React and this is named import
+// and normal React is default import
 import { useState, useEffect } from "react";
 // Generally how this Restraunt Data comes from Backend to Us
 import resList from "../utils/mockData";
@@ -8,18 +10,21 @@ import Shimmer from "./Shimmer";
 //When will this callback function will be called ?
 // As soon as this render cycle finish , It will just quickly call this callback function
 const Body = () => {
-  //State Variable - Super Powerfull Variable
+  //Local State Variable - Super Powerfull Variable
   //It maintains a State of our component
-  //Whenever State Variable updates , React re-renders the component
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  //Whenever State Variable updates , React will re-renders the component
+  //Whenever State Variable updates , React trigeers the Reconcillation cycle(Re - Renders the Component)
+  const [listOfRestaurants, setListOfRestaurants] = useState([]); //Default value as empty array
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState(""); //useEffect takes 2 input //useEffect(()=>{},[]) // Callback function , Dependency Array //When will this callback function will be called ? // As soon as this render cycle finish , It will just quickly call this callback function
-
 
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
+    console.log("Fetch Data is Called ");
+    //fetch will return the promise
+    //either you can use async await or .then for promise
     // const data = await fetch(
     // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     // );
@@ -40,6 +45,10 @@ const Body = () => {
             type="text"
             className="search-box"
             value={searchText}
+            //onChange Function : Whenver something changes in input text than it will re render the component
+            //Whenever the searchText is writting my whole component is getting re render that much fast is React
+            //So is it say that is this making App Slow because if we put something on the searchText than my whole component renders .
+            //React is Re rendering the whole Body component but only updating the input box in the Real DOM
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
@@ -76,7 +85,6 @@ const Body = () => {
           Top Rated Restaurant's
         </button>
       </div>
-      
 
       <div className="res-container">
         {/* Passing props to components */}
